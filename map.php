@@ -261,7 +261,7 @@ var markers = L.markerClusterGroup();
 
 // Step 5: Define the custom tree icon
 var treeIcon = L.icon({
-iconUrl: 'andmin/assets/img/Tag Icon.png',  // Replace with actual path
+iconUrl: 'user/assets/img/Tag Icon.png',  // Replace with actual path
 iconSize: [38, 38],  // Size of the icon
 iconAnchor: [19, 38],  // Point of the icon that corresponds to the marker's location
 popupAnchor: [0, -38]  // Point from which the popup should open relative to the iconAnchor
