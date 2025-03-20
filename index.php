@@ -182,8 +182,8 @@ if ($result->num_rows > 0) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-    <button class="btn btn-success w-100 mb-3" onclick="window.location.href='dev-kalasan/index.php'">Kalasan Admin</button>
-    <button class="btn btn-success w-100" onclick="window.location.href='kalasan_mapping/index.php'">Kalasan Forest Ranger</button>
+    <button class="btn btn-success w-100 mb-3" onclick="window.location.href='admin/index.php'">Kalasan Admin</button>
+    <button class="btn btn-success w-100" onclick="window.location.href='user/index.php'">Kalasan Forest Ranger</button>
 </div>
 
 
