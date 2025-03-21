@@ -81,6 +81,10 @@ if ($result && $row = $result->fetch_assoc()) {
         .navbar-nav .nav-link:hover {
             color: #d4edda !important;
         }
+        
+        .active{
+        font-weight: bold;
+    }
         #map {
             position: absolute;
             top: 56px; /* Adjust for navbar height */
@@ -123,7 +127,7 @@ if ($result && $row = $result->fetch_assoc()) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="map.php">Map</a></li>
+                <!--<li class="nav-item"><a class="nav-link" href="map.php">Map</a></li>-->
                 <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
                 <li class="nav-item">
