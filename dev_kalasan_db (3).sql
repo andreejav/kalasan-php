@@ -304,3 +304,91 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Create a temporary table to store predefined locations with accurate coordinates
+CREATE TEMPORARY TABLE temp_locations (
+    address VARCHAR(255),
+    latitude DOUBLE,
+    longitude DOUBLE,
+    area_planted INT
+);
+
+-- Insert accurate latitude and longitude values for the specified locations
+INSERT INTO temp_locations (address, latitude, longitude, area_planted) VALUES
+('San Miguel & Lunocan, Manolo Fortich, Bukidnon', 8.382832,124.844469, 8),
+('Lingion, Manolo Fortich, Bukidnon', 8.425897, 124.897884, 6),
+('Dicklum, Manolo Fortich, Bukidnon', 8.370144,124.848220, 6);
+
+-- Insert tree planting data into the tree_planted table with random distribution
+INSERT INTO tree_planted (user_id, latitude, longitude, date_time, address, image_path, exif_data, validated, species_name, scientific_name, description, category, admin_id)
+SELECT 
+    8,  -- user_id (Adjust as needed)
+    t.latitude + ((RAND() - 0.5) * 0.002),  -- Slight randomization for realistic planting locations
+    t.longitude + ((RAND() - 0.5) * 0.002), 
+    NOW(),
+    t.address,
+    'uploads/sample_image.jpg',
+    NULL,
+    0,
+    'Bagras',
+    'Eucalyptus deglupta',
+    'Commonly known as the rainbow eucalyptus, used in reforestation.',
+    'Native',
+    3  -- admin_id (Adjust as needed)
+FROM temp_locations t
+CROSS JOIN (
+    SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL 
+    SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL
+    SELECT 9 UNION ALL SELECT 10 UNION ALL SELECT 11 UNION ALL SELECT 12 UNION ALL
+    SELECT 13 UNION ALL SELECT 14 UNION ALL SELECT 15 UNION ALL SELECT 16 UNION ALL
+    SELECT 17 UNION ALL SELECT 18 UNION ALL SELECT 19 UNION ALL SELECT 20
+) AS numbers
+LIMIT 20; -- Adjust limit based on available seedlings
+
+-- Get last inserted tree_planted_id
+SET @tree_planted_id = LAST_INSERT_ID();
+
+-- Insert into analytics table for monitoring planted trees
+INSERT INTO analytics (tree_planted_id, total_count)
+SELECT id, FLOOR(RAND() * 100) + 1 FROM tree_planted WHERE id >= @tree_planted_id;
+
+-- Insert into reviews table for verification and comments
+INSERT INTO reviews (tree_planted_id, review_by, status, comments)
+SELECT id, 3, 'pending', 'Initial review required.' FROM tree_planted WHERE id >= @tree_planted_id;
+
+-- Insert tree images for reference
+INSERT INTO tree_images (tree_planted_id, image_path)
+SELECT id, 'uploads/sample_image.jpg' FROM tree_planted WHERE id >= @tree_planted_id;
+
+-- Drop the temporary table
+DROP TEMPORARY TABLE temp_locations;
