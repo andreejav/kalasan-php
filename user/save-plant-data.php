@@ -16,7 +16,7 @@ $latitude = floatval($_POST['lat']);
 $longitude = floatval($_POST['lon']);
 $date_time = $_POST['date'];
 $address = htmlspecialchars($_POST['address'], ENT_QUOTES);
-$targetDir = "uploads/";
+$targetDir = "../uploads/";
 $allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
 
 // Handle file upload

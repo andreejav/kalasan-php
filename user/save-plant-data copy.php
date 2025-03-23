@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $imageTmpPath = $_FILES['image']['tmp_name'];
         $imageName = $_FILES['image']['name'];
-        $uploadDir = __DIR__ . '/uploads/'; // Absolute path to the uploads directory
+        $uploadDir = __DIR__ . '../uploads/'; // Absolute path to the uploads directory
 
         // Create the uploads directory if it doesn't exist
         if (!is_dir($uploadDir)) {
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Generate a unique file name for the image
-        $imageFilePath = 'uploads/' . uniqid() . '-' . basename($imageName);
+        $imageFilePath = '../uploads/' . uniqid() . '-' . basename($imageName);
         $absoluteFilePath = $uploadDir . basename($imageFilePath);
 
         // Move uploaded file to the uploads directory

@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_tree_id'])) {
 // Handle additional image uploads
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['additional_images'])) {
     $tree_id = $_POST['tree_id'];
-    $uploads_dir = 'uploads/trees';
+    $uploads_dir = '../uploads/trees';
 
     // Ensure upload directory exists
     if (!is_dir($uploads_dir)) {
