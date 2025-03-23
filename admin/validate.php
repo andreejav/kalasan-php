@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 
 include '../src/db/db_connection.php';
 
-$uploads_dir = 'uploads/trees';
+$uploads_dir = '../uploads/trees';
 if (!is_dir($uploads_dir)) {
     mkdir($uploads_dir, 0777, true);
 }
