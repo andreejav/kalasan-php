@@ -220,9 +220,9 @@ $conn->close();
                         <!-- Display profile picture and user details -->
                         <div class="profile-section">
                             <?php if (!empty($profilePicture)): ?>
-                                <img src="uploads/<?php echo htmlspecialchars($profilePicture); ?>" alt="Profile Picture" class="profile-picture" style="width:150px; height:150px; object-fit:cover;">
+                                <img src="../uploads/<?php echo htmlspecialchars($profilePicture); ?>" alt="Profile Picture" class="profile-picture" style="width:150px; height:150px; object-fit:cover;">
                             <?php else: ?>
-                                <img src="default-profile.png" alt="Default Profile Picture" class="profile-picture" style="width:150px; height:150px; object-fit:cover;">
+                                <img src="../uploads/default-profile.jpg" alt="Default Profile Picture" class="profile-picture" style="width:150px; height:150px; object-fit:cover;">
                             <?php endif; ?>
 
                             <p><strong>Username:</strong> <?php echo htmlspecialchars($username); ?></p>

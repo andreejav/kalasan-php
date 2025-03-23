@@ -15,7 +15,7 @@ if (!$conn) {
 }
 
 // Set upload directory and ensure it exists
-$uploads_dir = 'uploads/trees';
+$uploads_dir = '../uploads/trees';
 if (!is_dir($uploads_dir)) {
     mkdir($uploads_dir, 0777, true);
 }
@@ -285,11 +285,21 @@ mysqli_close($conn);
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($tree['details']['species_name']); ?></h5>
                             <p class="card-text"><?php echo htmlspecialchars($tree['details']['address']); ?></p>
-                            <img 
+
+                            <!--uncomment this line of code below to display the uploader's profile picture-->
+                            <!--<img 
                                 class="profile-pic" 
                                 src="<?php echo htmlspecialchars($tree['details']['profile_picture']); ?>" 
                                 alt="Profile Picture" 
+                            />-->
+
+                            <!--delete the below code of default profile when fix the profile picture-->
+                            <img 
+                                class="profile-pic" 
+                                src="../uploads/default-profile.jpg" 
+                                alt="Profile Picture" 
                             />
+
                         </div>
                     </div>
                 </div>

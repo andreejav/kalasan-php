@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Handle profile picture upload
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = 'uploads/';
+        $uploadDir = '../uploads/';
         $fileName = basename($_FILES['profile_picture']['name']);
         $uploadFilePath = $uploadDir . $fileName;
 
@@ -80,7 +80,7 @@ $conn->close();
             <div class="form-group">
                 <label for="profile_picture">Profile Picture:</label>
                 <?php if (!empty($profilePicture)): ?>
-                    <img src="uploads/<?php echo htmlspecialchars($profilePicture); ?>" alt="Profile Picture" class="profile-picture" style="width:100px; height:100px; object-fit:cover;">
+                    <img src="../uploads/<?php echo htmlspecialchars($profilePicture); ?>" alt="Profile Picture" class="profile-picture" style="width:100px; height:100px; object-fit:cover;">
                 <?php else: ?>
                     <img src="default-profile.png" alt="Default Profile Picture" class="profile-picture" style="width:100px; height:100px; object-fit:cover;">
                 <?php endif; ?>

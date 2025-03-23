@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $max_size = 5 * 1024 * 1024; // 5MB limit
 
         if (in_array($_FILES['tree_image']['type'], $allowed_types) && $_FILES['tree_image']['size'] <= $max_size) {
-            $image_path = 'uploads/' . basename($_FILES['tree_image']['name']);
+            $image_path = '../uploads/' . basename($_FILES['tree_image']['name']);
             if (move_uploaded_file($_FILES['tree_image']['tmp_name'], $image_path)) {
                 // Insert the new image into the tree_images table
                 $stmt = $conn->prepare("INSERT INTO tree_images (tree_planted_id, image_path) VALUES (?, ?)");
